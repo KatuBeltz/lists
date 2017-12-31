@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
+from django.urls.base import reverse
 from django.views.generic import TemplateView
 from lists.forms import CollectionForm
 from lists.models import Collection
@@ -8,9 +9,8 @@ from lists.models import Collection
 def index(request):
     return HttpResponse("Hello, world. You're at the lists index.")
 
-
-
-class IndexView(TemplateView):
+class IndexView(LoginRequiredMixin, TemplateView):
+    login_url = '/login/'
     template_name = "index.html"
 
     def get_context_data(self, **kwargs):

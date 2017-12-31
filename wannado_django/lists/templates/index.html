@@ -24,6 +24,7 @@ Write your wannados below :D!
     {{ form.text_area }}
     <input type="submit" value="Save" />
 </form>
+<a type="button" href="{% url 'logout' %}">Logout</a>
 
 <script>
   var editor = CodeMirror.fromTextArea(myTextarea, {
